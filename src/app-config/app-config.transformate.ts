@@ -3,19 +3,15 @@ import { validateSync } from 'class-validator';
 import { AppConfig } from './app-config';
 
 export const appConfigTransformate = (envObject: Record<string, unknown>): AppConfig => {
-  const rawInstance = plainToInstance(AppConfig, envObject, {
-    ignoreDecorators: true,
+  const instance = plainToInstance(AppConfig, envObject, {
+    enableImplicitConversion: true,
   });
 
-  const errors = validateSync(rawInstance);
+  const errors = validateSync(instance);
 
   if (errors.length > 0) {
     throw new Error(errors.toString());
   }
 
-  const convertedInstace = plainToInstance(AppConfig, envObject, {
-    enableImplicitConversion: true,
-  });
-
-  return convertedInstace;
+  return instance;
 };
