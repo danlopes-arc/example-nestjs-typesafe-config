@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { appConfigTransformate } from 'src/app-config/app-config.transformate';
+import { parseEnv } from 'src/app-config/parse-env';
 import { AppConfigService } from './app-config.service';
 
 @Module({
-  imports: [ConfigModule.forRoot({ validate: appConfigTransformate })],
+  imports: [ConfigModule.forRoot({ validate: parseEnv })],
   providers: [AppConfigService],
   exports: [AppConfigService],
 })

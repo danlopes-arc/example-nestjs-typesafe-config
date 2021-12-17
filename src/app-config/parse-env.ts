@@ -1,9 +1,9 @@
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import { AppConfig } from './app-config';
+import { Env } from './env';
 
-export const appConfigTransformate = (envObject: Record<string, unknown>): AppConfig => {
-  const instance = plainToInstance(AppConfig, envObject, {
+export const parseEnv = (envObject: Record<string, unknown>): Env => {
+  const instance = plainToInstance(Env, envObject, {
     enableImplicitConversion: true,
   });
 

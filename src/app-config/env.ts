@@ -1,6 +1,6 @@
 import { IsNumber, IsString } from 'class-validator';
 
-export class AppConfig {
+export class Env {
   @IsNumber()
   PORT!: number;
 
